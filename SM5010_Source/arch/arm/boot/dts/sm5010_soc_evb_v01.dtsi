@@ -1,0 +1,80 @@
+// Definitions for sm5010 from Siliconmitus
+
+/ {
+	sm-pmic {		
+		status = "okay";
+		
+		sm-pmic,irq-gpio = <&gpio 4 0>;
+		sm-pmic,entcxo-pin = <&gpio 6 0>; /* ENTCXO Pin */
+		sm-pmic,enl16-pin = <&gpio 13 0>; /* ENL16 Pin */
+		
+		gpios = <&gpio 17 0>, <&gpio 27 0>, <&gpio 22 0>, <&gpio 5 0>; /*DVS1, DVS2, DVS3, nPWRSTM Pin*/
+
+		/* CNTL1 */
+		sm-pmic,en_32kout = <1>; /* 0 : Disable, 1 : Enable */
+		sm-pmic,longkey_val = <3>;
+		sm-pmic,smpl_en = <1>;
+		sm-pmic,smpl_timer_val = <0>;	/* 500ms */
+		sm-pmic,smpl_power_on_type = <1>; /* 0 : Manual, 1 : Auto*/
+
+		/* CNTL2 */
+		sm-pmic,npwrstm_en = <0>;	/* 0 : Disable, 1 : Enable */
+		sm-pmic,mask_int_en = <0>;	/* 0 : Not Mask, 1 : Mask */
+
+		/* CNTL3 */
+		sm-pmic,envbatng_en = <1>;	/* 1 : Enable */
+		sm-pmic,envref_en = <1>;	/* 1 : Enable */
+
+		/* MRSTBCNTL */
+		sm-pmic,mrstb_timer_val = <0>; /* 0 : 6sec */
+		sm-pmic,mrstb_hehavior = <0>; /* 0 : Do not reboot */	
+		sm-pmic,mrstb_key = <0>; /* 0 : One, 1 : Dual */				
+		sm-pmic,mrstb_nreset = <0>; /* 0 : Do not toggle the nRESET pin */
+		sm-pmic,mrstb_en = <0>;	/* 0 : Disable, 1 : Enable */
+
+		/* Buck1 */
+		sm-pmic,enshedding = <0>; /* 0 : Disable, 1 : Enable */
+		sm-pmic,freq = <1>; /* 1 : 4MHz */
+		sm-pmic,dvsrampb1 = <0>;
+		sm-pmic,enrampb1down = <0>;
+		sm-pmic,buck1adisen = <1>;
+		sm-pmic,buck1mode = <1>;
+
+		/* Buck2 */
+		sm-pmic,buck2mode = <1>;
+		
+		/* Buck3 */
+		sm-pmic,buck3mode = <1>;
+
+		/* Buck4 */
+		sm-pmic,buck4mode = <1>;
+
+		/* Buck5 */
+		sm-pmic,buck5mode = <1>;
+
+		/* Buck6 */
+		sm-pmic,buck6mode = <1>;
+		
+		/* Watchdog */
+		sm-pmic,wdt_en = <0>; /* 0 : Disable, 1 : Enable */
+		sm-pmic,wdt_timer_val = <0>; /* 0 : 30s */
+
+		/* MICDET */
+		sm-pmic,comp_en = <0>; /* 0 : Disable, 1 : Enable */
+		sm-pmic,comp_time_val = <0>; /* 0 : 30ms */
+		sm-pmic,comp_duty_val = <0>;
+		sm-pmic,comp_vref_val = <0>; /* 400mV */
+
+		/* RTC Format */
+		sm-pmic,rtc_24hr_mode = <1>; /* 1 : 24-mode in driver */
+
+		/* RTC: Reset rtc to 1/1/2016 12:00:00(Wed) */
+		sm-pmic,init_time,sec = <0>;
+		sm-pmic,init_time,min = <0>;
+		sm-pmic,init_time,hour = <12>;
+		sm-pmic,init_time,mday = <1>;
+		sm-pmic,init_time,mon = <0>;
+		sm-pmic,init_time,year = <116>;
+		sm-pmic,init_time,wday = <5>;			
+	};
+};
